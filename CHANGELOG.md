@@ -1,0 +1,32 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2026-03-18
+
+### Added
+
+- **SKILL.md** - Coolify API skill definition with metadata and usage documentation
+  - Base configuration for API interaction
+  - Permission levels explanation (`read-only`, `read:sensitive`, `view:sensitive`, `*`)
+  - Common workflows and error handling guide
+- **references/authorization.md** - Comprehensive authorization guide
+  - API access and route prefixing details
+  - Bearer token authentication format
+  - Token generation instructions
+  - Permission types and their use cases
+  - Troubleshooting for common authentication issues
+- **references/endpoints.md** - Complete API endpoints reference
+  - Public endpoints (health check, feedback)
+  - Server management endpoints
+  - Project management endpoints (CRUD operations)
+  - Application management (start, stop, restart, deploy)
+  - Service and database management
+  - Deployment tracking and logs
+  - Environment variables management
+  - Webhooks configuration
+  - Error responses and rate limiting
+- **LICENSE.md** - MIT License
