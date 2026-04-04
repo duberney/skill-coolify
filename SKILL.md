@@ -17,7 +17,7 @@ This skill enables interaction with Coolify's REST API for infrastructure manage
 Before making any API calls:
 
 1. **Read the authorization guide**: See `references/authorization.md` for authentication requirements
-2. **Check available endpoints**: See `references/endpoints.md` for supported operations
+2. **Check available endpoints**: See `references/openapi.json` for supported operations and parameters
 
 ## Base Configuration
 
@@ -65,4 +65,4 @@ Authorization: Bearer <token>
 ## Reference Files
 
 - **Authentication details**: `references/authorization.md`
-- **API endpoints**: `references/endpoints.md`
+- **API endpoints**: `references/openapi.json`
