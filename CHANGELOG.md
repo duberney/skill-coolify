@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-04-06
+
+### Added
+
+- **workflows/deploy-filebrowser.md** - Complete Filebrowser deployment workflow
+  - Project context determination before deployment
+  - Credentials and domain collection from user
+  - Docker Compose configuration with setup service
+  - Subdomain configuration using `urls` field
+  - Shared volume reminder for file integration
+
+- **SKILL.md** - Deployment guidelines
+  - Added "Enabling API Access" step in Quick Start
+  - Added "Deployments and Resource Creation" section requiring project context
+  - Added "Workflows" section referencing deploy-filebrowser.md
+
+- **references/authorization.md** - API enablement documentation
+  - Added "Enabling API Access" section (Settings > Advanced)
+  - Added "Required Information" section (Server URL, API Token)
+
+### Changed
+
+- **README.md**
+  - Added "Enabling API Access" configuration section
+  - Added "Required Information" section
+  - Updated file structure to include `workflows/` directory
+  - Updated API token generation path (Security > API tokens)
+
 ## [1.2.0] - 2026-04-06
 
 ### Added

@@ -1,6 +1,21 @@
 # Authorization Guide
 
-## API Access
+## Enabling API Access
+
+Before using the Coolify API, you must enable it in your instance:
+
+1. Navigate to **Settings** > **Advanced** in your Coolify dashboard.
+2. Enable the **API Access** option.
+   > If enabled, authenticated requests to Coolify's REST API will be allowed. Configure API tokens in Security > API Tokens. (`/security/api-tokens`)
+
+## Required Information
+
+To successfully authenticate and interact with the API, you must have the following information:
+
+1. **Server URL**: The base URL of your Coolify instance (e.g., `http://<your-coolify-ip>:8000`).
+2. **API Token**: A Bearer token generated from the Coolify UI.
+
+## API Access Details
 
 The Coolify API is accessible at:
 
@@ -38,7 +53,7 @@ Authorization: Bearer 3|WaobqX9tJQshKPuQFHsyApxuOOggg4wOfvGc9xa233c376d7
 
 Generate API tokens from the Coolify UI:
 
-1. Navigate to **Keys & Tokens** > **API tokens**
+1. Navigate to **Security** > **API tokens** (or **Keys & Tokens** > **API tokens** depending on your version)
 2. Enter a descriptive name for your token
 3. Click **Create New Token**
 4. **Important**: Copy the token immediately - it will only be shown once

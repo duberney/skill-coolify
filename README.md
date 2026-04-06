@@ -61,7 +61,21 @@ Once loaded, Claude will have access to the Coolify API documentation and can he
 
 ## Configuration
 
-### API Access
+### Enabling API Access
+
+Before using the Coolify API, you must enable it in your instance:
+
+1. Go to **Settings** > **Advanced** in your Coolify dashboard.
+2. Enable the **API Access** setting.
+   > If enabled, authenticated requests to Coolify's REST API will be allowed. Configure API tokens in Security > API Tokens. (`/security/api-tokens`)
+
+### Required Information
+
+To use this skill, you need:
+1. **Server URL**: Your Coolify instance address (e.g., `http://192.168.1.100:8000`)
+2. **API Token**: Your generated Bearer token
+
+### API Access Details
 
 | Setting | Value |
 |---------|-------|
@@ -72,7 +86,7 @@ Once loaded, Claude will have access to the Coolify API documentation and can he
 ### Generating an API Token
 
 1. Navigate to your Coolify dashboard
-2. Go to **Keys & Tokens** > **API tokens**
+2. Go to **Security** > **API tokens** (or **Keys & Tokens** > **API tokens** depending on your version)
 3. Enter a name and click **Create New Token**
 4. Copy the token immediately (shown only once)
 
@@ -155,10 +169,12 @@ skill-coolify/
 ├── README.md                   # This documentation file
 ├── LICENSE.md                  # MIT License
 ├── CHANGELOG.md                # Version history
-└── references/
-    ├── authorization.md        # Authentication & permissions guide
-    ├── openapi.json            # OpenAPI 3.1.0 specification
-    └── service-domains.md      # Service domain/URL configuration
+├── references/
+│   ├── authorization.md        # Authentication & permissions guide
+│   ├── openapi.json            # OpenAPI 3.1.0 specification
+│   └── service-domains.md      # Service domain/URL configuration
+└── workflows/
+    └── deploy-filebrowser.md   # Workflow for deploying Filebrowser
 ```
 
 ## Troubleshooting
@@ -193,5 +209,5 @@ This skill is provided as-is for use with Claude Code and the Coolify platform.
 
 ## Version
 
-- **Skill Version**: 1.2.0
+- **Skill Version**: 1.3.0
 - **Compatible with**: Coolify v4.x API
