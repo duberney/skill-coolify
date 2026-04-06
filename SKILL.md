@@ -5,7 +5,7 @@ description: >
   Use when the user asks to "check coolify status", "list my projects", "deploy an app",
   "manage coolify", "use coolify api", or mentions Coolify-related operations.
 metadata:
-  version: 1.0.0
+  version: 1.2.0
 ---
 
 # Coolify API Skill
@@ -66,3 +66,4 @@ Authorization: Bearer <token>
 
 - **Authentication details**: `references/authorization.md`
 - **API endpoints**: `references/openapi.json`
+- **Service domain configuration**: `references/service-domains.md`

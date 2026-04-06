@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-06
+
+### Added
+
+- **references/service-domains.md** - Service domain/URL configuration guide
+  - Documentation for exposing Docker Compose services as subdomains
+  - Usage of `urls` field (NOT `fqdn` or `domains`)
+  - Troubleshooting common domain configuration issues
+  - Workflow for configuring new service domains
+
+### Changed
+
+- Updated `SKILL.md` to reference the new service-domains.md
+- Updated `README.md` with service domain configuration section
+- Updated file structure documentation in README.md
+
 ## [1.1.0] - 2026-03-24
 
 ### Changed

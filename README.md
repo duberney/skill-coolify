@@ -122,15 +122,43 @@ Content-Type: application/json
 }
 ```
 
+## Service Domain Configuration
+
+When exposing a service (Docker Compose) as a subdomain, you must use the `urls` field:
+
+```http
+PATCH /v1/services/{uuid}
+Content-Type: application/json
+
+{
+  "urls": [
+    {
+      "name": "service-name",
+      "url": "https://subdomain.domain.tld"
+    }
+  ]
+}
+```
+
+**Important**:
+- Use `urls` field (NOT `fqdn` or `domains`)
+- `name` must match the service name in docker-compose.yml
+- URL must include protocol (`https://` or `http://`)
+
+See `references/service-domains.md` for full documentation.
+
 ## File Structure
 
 ```
 skill-coolify/
 ├── SKILL.md                    # Main skill definition (YAML + instructions)
 ├── README.md                   # This documentation file
+├── LICENSE.md                  # MIT License
+├── CHANGELOG.md                # Version history
 └── references/
     ├── authorization.md        # Authentication & permissions guide
-    └── endpoints.md            # Complete API endpoints reference
+    ├── openapi.json            # OpenAPI 3.1.0 specification
+    └── service-domains.md      # Service domain/URL configuration
 ```
 
 ## Troubleshooting
@@ -165,5 +193,5 @@ This skill is provided as-is for use with Claude Code and the Coolify platform.
 
 ## Version
 
-- **Skill Version**: 1.0.0
+- **Skill Version**: 1.2.0
 - **Compatible with**: Coolify v4.x API
