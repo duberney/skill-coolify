@@ -5,7 +5,7 @@ description: >
   Use when the user asks to "check coolify status", "list my projects", "deploy an app",
   "manage coolify", "use coolify api", or mentions Coolify-related operations.
 metadata:
-  version: 1.3.1
+  version: 1.3.2
 ---
 
 # Coolify API Skill
@@ -49,6 +49,13 @@ Whenever the user asks to create, install, or deploy a new application, service,
 3. Ask the user if they want to deploy the resource into an existing project or create a new one.
    *Tip: Suggest an appropriate project name based on the user's request if you think a new one is best.*
 4. *Do not proceed with the creation until the user confirms the target project.*
+
+## Domain Configuration
+
+Whenever you configure or change a subdomain for an application, the changes will not take effect immediately because the configuration needs to be loaded. 
+You **MUST** restart the service for the configuration to take effect.
+
+Use the `GET /v1/applications/{uuid}/restart` (or `POST`) endpoint to restart the application after setting or modifying a subdomain.
 
 ## Common Workflows
 
