@@ -5,7 +5,7 @@ description: >
   Use when the user asks to "check coolify status", "list my projects", "deploy an app",
   "manage coolify", "use coolify api", or mentions Coolify-related operations.
 metadata:
-  version: 1.3.0
+  version: 1.3.1
 ---
 
 # Coolify API Skill

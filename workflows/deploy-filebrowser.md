@@ -19,52 +19,42 @@ Once the project is determined, **ask the user** for the following information:
 
 ## 3. Deploy via Docker Compose
 Use the Coolify API to create a new Service/Application inside the designated environment of the chosen project, using the following `docker-compose.yml`. 
-**Important**: Replace `${FB_USER}` and `${FB_PASSWORD}` in the `environment` section of the `filebrowser-setup` service with the credentials provided by the user.
+**CRITICAL INSTRUCTION FOR THE AGENT**: You MUST directly hardcode/replace the `el_usuario_aqui` and `la_contrasena_aqui` strings in the YAML text with the actual credentials provided by the user BEFORE sending the payload to the Coolify API. Do not use `${VAR}` format or Coolify will see empty strings.
 
-```yaml
-version: "3.8"
-services:
-  filebrowser-setup:
-    image: alpine:latest
-    container_name: filebrowser-setup
-    restart: "no"
-    environment:
-      # The agent must insert the user's requested username and password here:
+  # THE AGENT MUST REPLACE THESE STRINGS WITH THE ACTUAL CREDENTIALS BEFORE DEPLOY:
       - FB_USER=${FB_USER}
       - FB_PASSWORD=${FB_PASSWORD}
-    command: >
-      sh -c "
-        if [ ! -f /database/filebrowser.db ]; then
-          echo 'Downloading Filebrowser for initial setup...';
-          wget -qO- https://github.com/filebrowser/filebrowser/releases/download/v2.30.0/linux-amd64-filebrowser.tar.gz | tar -xz -C /usr/local/bin;
-          echo 'Initializing Database...';
-          filebrowser config init --database /database/filebrowser.db;
-          echo 'Configuring User and Password...';
-          filebrowser users add \"$$FB_USER\" \"$$FB_PASSWORD\" --perm.admin --database /database/filebrowser.db;
-          echo 'Setup Complete.';
-        else
-          echo 'Database already exists. Skipping setup.';
-        fi
-      "
-    volumes:
-      - filebrowser-database:/database
 
+```yaml
+version: '3.8'
+services:
   filebrowser:
-    image: filebrowser/filebrowser:latest
+    image: 'filebrowser/filebrowser:latest'
     container_name: filebrowser
+    # We force the container to run as root to solve the "permission denied" error
+    user: root
     restart: always
-    depends_on:
-      filebrowser-setup:
-        condition: service_completed_successfully
+    environment:
+     # THE AGENT MUST REPLACE THESE STRINGS WITH THE ACTUAL CREDENTIALS BEFORE DEPLOY:
+      - FB_USER=${FB_USER}
+      - FB_PASSWORD=${FB_PASSWORD}
+      - FB_DATABASE=/database/filebrowser.db
+      - FB_ADDRESS=0.0.0.0
+      - FB_PORT=80
+    expose:
+      - '80'
     volumes:
-      - filebrowser-database:/database
-      # This volume maps the shared files route so new projects can consult uploaded files
-      - /data/coolify/shared_files:/srv
-    ports:
-      - "8080:80"
+      - '/data/coolify/shared_files:/srv'
+      - './database:/database'
+    entrypoint: /bin/sh -c
+    # Simplified command without comments and using logical operators
+    command: >
+      "filebrowser config init || true; 
+      filebrowser config set --address 0.0.0.0 --port 80 || true;
+      filebrowser users add \"$$FB_USER\" \"$$FB_PASSWORD\" --perm.admin || filebrowser users update \"$$FB_USER\" --password \"$$FB_PASSWORD\"; 
+      exec filebrowser"
 
-volumes:
-  filebrowser-database:
+
 ```
 
 ## 4. Configure the Subdomain

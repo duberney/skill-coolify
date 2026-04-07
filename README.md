@@ -209,5 +209,5 @@ This skill is provided as-is for use with Claude Code and the Coolify platform.
 
 ## Version
 
-- **Skill Version**: 1.3.0
+- **Skill Version**: 1.3.1
 - **Compatible with**: Coolify v4.x API

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-04-06
+
+### Changed
+
+- **workflows/deploy-filebrowser.md** - Simplified Docker Compose configuration
+  - Removed separate `filebrowser-setup` service
+  - Consolidated to single `filebrowser` service with inline setup
+  - Added `user: root` to fix permission denied errors
+  - Updated entrypoint to handle config init and user creation in one command
+  - Changed volume from named volume to bind mount (`./database:/database`)
+  - Updated credential placeholder instructions for clarity
+
 ## [1.3.0] - 2026-04-06
 
 ### Added
